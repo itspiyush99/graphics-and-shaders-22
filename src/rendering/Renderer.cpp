@@ -102,6 +102,7 @@ void Renderer::initialise_glfw()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, major);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, minor);
     glfwWindowHint(GLFW_OPENGL_PROFILE, OPENGL_PROFILE_USED);
+    glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
 
 #if __APPLE__
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
@@ -122,6 +123,8 @@ bool Renderer::create_window()
 #else
     window = glfwCreateWindow(width, height, WINDOW_NAME, NULL, NULL);
 #endif
+    glfwSetWindowAspectRatio(window, 1920, 1080); 
+    glfwSetWindowSizeLimits(window, 1280, 720, 1920, 1080); 
 
     if (window == NULL)
     {
